@@ -2,8 +2,8 @@ import { CsvItemGateway as CsvItemsGateway } from "./erp-gateways/csv/CsvItemsGa
 import { IbItemsGateway } from "./ib-gateways/IbUpdateItemsGateway";
 import { UpdateItemsUsecase } from "./use-cases/UpdateItemsUsecase";
 
-export function IntegrationModule(filePath: string) {
-  const ibItemsGateway = new IbItemsGateway();
+export function IntegrationModule(filePath: string, appVersion: string) {
+  const ibItemsGateway = new IbItemsGateway(appVersion);
   const erpItemsGateway = new CsvItemsGateway(filePath);
   const updateItemsUsecase = new UpdateItemsUsecase(
     ibItemsGateway,

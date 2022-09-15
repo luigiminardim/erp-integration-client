@@ -7,6 +7,10 @@ import { IntegrationModule } from "./IntegrationModule";
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
+// Auto update;
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('update-electron-app')()
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   // eslint-disable-line global-require
@@ -26,7 +30,7 @@ function createWindow(): void {
 }
 
 function run(filePath: string) {
-  const { updateItemsUsecase } = IntegrationModule(filePath);
+  const { updateItemsUsecase } = IntegrationModule(filePath, app.getVersion());
   updateItemsUsecase.execute();
 }
 
