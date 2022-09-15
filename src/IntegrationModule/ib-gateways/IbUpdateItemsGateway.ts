@@ -17,7 +17,7 @@ export class IbItemsGateway implements IIbItemsGateway {
     };
     try {
       const response = await axios({
-        baseURL: "https://api.instabuy.com.br/store/",
+        baseURL: "http://localhost:8080",
         url: "products",
         method: "PUT",
         headers: {
