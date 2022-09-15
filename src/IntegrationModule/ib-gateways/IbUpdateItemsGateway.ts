@@ -11,15 +11,21 @@ export class IbItemsGateway implements IIbItemsGateway {
     const body: IbPutProductsBody = {
       products: items.map((item) => buildIbProduct(item)),
     };
-    const response = await axios({
-      baseURL: "https://api.instabuy.com.br/store/",
-      url: "products",
-      method: "PUT",
-      headers: {
-        "api-key": "UgjUpN-xUTRXe_47Edmg94MqDb-3a2AJqo1iZPtJu8A",
-      },
-      data: body,
-    });
-    console.log(response.data);
+    console.log(body)
+    try {
+
+      const response = await axios({
+        baseURL: "https://api.instabuy.com.br/store/",
+        url: "products",
+        method: "PUT",
+        headers: {
+          "api-key": "qlWyl0JuTMGtRv0HV6k5XvPp9o9OBFZm9smVR-BSvPQ",
+        },
+        data: body,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log("axios error:", error);
+    }
   }
 }

@@ -26,7 +26,6 @@ export class UpdateItemsUsecase {
   ) {}
 
   async execute() {
-    console.log("Running UpdateItemsUsecase");
     const erpItems = await this.erpGateway.getItems();
     await this.ibGateway.updateItems(erpItems);
   }

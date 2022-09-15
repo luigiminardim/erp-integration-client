@@ -25,23 +25,22 @@ function createWindow(): void {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 }
 
-function run() {
-  console.log("running");
-  const { updateItemsUsecase } = IntegrationModule();
+function run(filePath: string) {
+  const { updateItemsUsecase } = IntegrationModule(filePath);
   updateItemsUsecase.execute();
 }
 
 function main() {
   const args = process.argv;
   const command = parseCommand(args);
-  if (command.type === "run") {
+  if (command.type === "start") {
     if (command.options.openWindow) {
       createWindow();
     }
+    run(command.options.filePath);
     const _2min = 1000 * 60 * 2;
-    run();
     setInterval(() => {
-      run();
+      run(command.options.filePath);
     }, _2min);
   }
 }
