@@ -2,7 +2,7 @@
   "name": "erp-integration-client",
   "productName": "erp-integration-client",
   "repository": "luigiminardim/erp-integration-client",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
