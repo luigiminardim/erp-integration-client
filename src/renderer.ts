@@ -27,4 +27,15 @@
  */
 // Add this to the end of the existing file
 
-import "./renderer-react";
+// import "./renderer-react";
+
+import React from 'react'
+import ReactDOM from "react-dom/client";
+import { App } from "./view-layer/App";
+
+function render() {
+  const root = ReactDOM.createRoot(document.body);
+  root.render(React.createElement(App, null, null));
+}
+
+render();

@@ -13,7 +13,11 @@
     "resolveJsonModule": true,
     "paths": {
       "*": ["node_modules/*"]
-    }
+    },
+    "strictNullChecks": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": ["src/**/*"]
 }

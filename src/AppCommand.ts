@@ -2,26 +2,20 @@ import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 
 export type AppCommand =
-  | {
-      type: "openWindow";
-    }
-  | {
-      type: "start";
-    };
+  | { type: "run"; options: { openWindow: boolean } }
+  | { type: "unknown" };
 
-export async function parseCommand(): Promise<AppCommand> {
-  const argv = await yargs(hideBin(process.argv))
-    .command(["run", "*"], {
-      type: "boolean",
-      description: "Run without displaying a window",
-      default: false,
-    })
+export function parseCommand(args: string[]): AppCommand {
+  const argv = yargs(hideBin(args))
+    .command(["run", "*"], "", (yargs) =>
+      yargs.option("no-window", { type: "boolean", default: true })
+    )
     .help()
     .parseSync();
-  console.log(argv.noDisplay);
-  if (argv.noDisplay) {
-    return { type: "start" };
-  } else {
-    return { type: "openWindow" };
+  switch (argv[0]) {
+    case undefined:
+    case "run":
+      return { type: "run", options: { openWindow: !argv["no-window"] } };
   }
+  return { type: "unknown" };
 }
