@@ -42,7 +42,11 @@ jobs:
           node-version: 16
       - name: install dependencies
         run: yarn install --frozen-lockfile
-      - name: puild
-        run: npm run publish
+      - name: Create artifacts
+        run: npm run make
+      - name: Upload artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: out/downloads/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -14,5 +14,8 @@
     "plugin:react/recommended",
     "plugin:react/jsx-runtime"
   ],
-  "parser": "@typescript-eslint/parser"
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "no-inner-declarations": "off"
+  }
 }
